@@ -1,3 +1,12 @@
+if (process.env.NODE_ENV !== 'production') {
+  const { execSync } = require('child_process');
+  console.log('🔧 Installing Chromium browser for Playwright...');
+  try {
+    execSync('npx playwright install chromium', { stdio: 'inherit' });
+  } catch (e) {
+    console.log('⚠️ Continuing without Chromium install...');
+  }
+}
 require('dotenv').config();
 const express = require('express');
 const { chromium } = require('playwright-chromium');
